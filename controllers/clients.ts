@@ -30,6 +30,18 @@ export const getById = async (req: any, res: Response)=>{
         res.status(500).json({ok: false, message: "error del servidor"})
    }
 }
+
+export const getByDocument = async (req: any, res: Response)=>{
+   const { document } = req.params
+   try {
+      const client = await ClientModel.findOne({document_value: document})//llamamos todos los clientes
+     // console.log({client})
+      res.status(201).json({ok: true, data: client})
+   } catch (error) {    
+        //sino error del servidor
+        res.status(500).json({ok: false, message: "error del servidor"})
+   }
+}
 export const update = async (req: any, res: Response)=>{
    const { id } = req.params
    try {

@@ -15,7 +15,7 @@ export const login = async (req: Request, res: Response)=>{
     const { email } = req.params;
     const { code } = req.body;
    // res.status(200).send("Hola Login")
-   console.log({ email, code })
+   //console.log({ email, code })
    // estes usar es una instancia de un objeto pero de mongoose y no de javascript
    // y para manipularlo hay que pasarlo a un objeto de javascript
    const user = await UserModel.findOne({ email, login_code: code }) //aqui comparamos que el codigo sea igual al codigo enviado por el front
@@ -36,7 +36,11 @@ export const login = async (req: Request, res: Response)=>{
       
       )
 
-   res.cookie("jwt", token)
+      //El web token venceria en 6 Meses
+   res.cookie("jwt", token, {
+      //         1s  1min 1hora 1dia 6mese
+      maxAge: 1000 * 60 * 60 * 60 * 180
+   })
 
    res.status(200).json({ok: true, message: "inicio de sesión exitoso"})
 }

@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 //importamos el modelo user
 import UserModel from "../models/user"
 import ventaModel from "../models/ventas";
+import ProductModel from "../models/products";
 
 async function connectDB(){
     if(!process.env.MONGODB_URL){
@@ -24,6 +25,12 @@ async function connectDB(){
         // })
         // console.log({newUser})
         // await newUser.save()
+    //CREAMOS ALGUNOS PRODUCTOS EN LA BASE DE DATOS
+        // await ProductModel.create({
+        //     name:"Mouse",
+        //     code:"C72535",
+        //     supplier_cost: 30,
+        // })
     } catch (error) {
         console.log("Hubo un error al conectar")
     }
