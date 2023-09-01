@@ -1,6 +1,8 @@
 import express from "express"
 import { getAll, create } from "../controllers/ventas";
 import { validateUser } from "../middleware/auth";
+import { validateRequest } from "../middleware/validteRequest";
+import { SaleCreationSchema } from "../schema/sale";
 
 const router = express.Router();
 
@@ -9,7 +11,7 @@ const router = express.Router();
 router.use(validateUser())
 
 router.get("/", getAll);
-router.post("/", create)
+router.post("/", validateRequest(SaleCreationSchema), create)
  
 
 export default router;

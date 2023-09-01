@@ -38,7 +38,7 @@ export const login = async (req: Request, res: Response)=>{
 
       //El web token venceria en 6 Meses
    res.cookie("jwt", token, {
-      //         1s  1min 1hora 1dia 6mese
+      //         1s  1min 1hora 1 dia 6 meses
       maxAge: 1000 * 60 * 60 * 60 * 180
    })
 

@@ -32,5 +32,5 @@ const ventarSchema = new Schema({
 })
 
 //hacemos la conexion con el modelo user 
-const ventaModel = model("Venta", ventarSchema, "ventas")
+const ventaModel = model("Sale", ventarSchema, "sales")
 export default ventaModel;
