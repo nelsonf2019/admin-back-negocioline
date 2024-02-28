@@ -23,16 +23,18 @@ export const login = async (req: Request, res: Response)=>{
    if(!user){
     return res.status(400).json({ok: false, message: "Código incorrecto"})
    }
+   const tokenPayload = {
+      sub: user._id,
+      firstname: user.firstname, 
+      lastname: user.lastname, 
+      roles: user.roles
+      }
   // console.log({user})
  //jsonwebtoken jwt
    const userObject = user.toObject()// debemos pasar el objeto de mongoose a objeto javascript
    //hacemos la firma en el token y definimos lo que vamos a mostrar o mandar
-   const token = jwt.sign({
-      sub: user._id,
-      firstname: user.firstname, 
-      lastname: user.lastname, roles: 
-      user.roles
-      }, process.env.JWT_TOKEN as string
+   const token = jwt.sign(
+      tokenPayload , process.env.JWT_TOKEN as string
       
       )
 
@@ -42,7 +44,7 @@ export const login = async (req: Request, res: Response)=>{
       maxAge: 1000 * 60 * 60 * 60 * 180
    })
 
-   res.status(200).json({ok: true, message: "inicio de sesión exitoso"})
+   res.status(200).json({ok: true, data: tokenPayload, message: "inicio de sesión exitoso"})
 }
 
 export const generateCode = async (req: Request, res: Response)=>{
@@ -60,7 +62,7 @@ export const generateCode = async (req: Request, res: Response)=>{
     randomCode += numbers
    }
    user.login_code = randomCode;
-   await user.save()
+   await user.save()// guarda el usuario en la base de datos
 //    console.log({ randomCode })
 //    console.log({user})
 //    console.log({email})
@@ -70,5 +72,6 @@ export const generateCode = async (req: Request, res: Response)=>{
         subject: "Este es tu código" + randomCode, 
         html:"Código para ingresar:" + randomCode,
     })
-   res.send("generate code")
+   res.status(200).json({ok:true, message: "Código enviado con éxito!"})
 }
+

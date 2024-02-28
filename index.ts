@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser"
 const app = epxress();
 connectDB();
 //middleware
-app.use(cookieParser())//esto sirve para setear las cookies
+app.use(cookieParser())//esto sirve para setear las cookies ,desde las rutas
 app.use(epxress.json())//para parsear el body los objetos json que vienen al back
 //cors es un middleware que permite conectar el front con el back y que solo el front pueda conectarse
 app.use(cors({origin: "http://localhost:3000", credentials: true}))

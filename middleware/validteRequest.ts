@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import { AnyZodObject, ZodError } from "zod"
-import { authRequest } from "../schema/auth"
+
 
 
 //es una función que retornaba otra función

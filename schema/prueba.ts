@@ -85,3 +85,12 @@ class Auto  {
 }
 
 const ferrari = new Auto(2,300, "Toyota")
+
+
+let arreglo3: number[] = [1,2,3,5,4]
+
+arreglo3.push(3)
+
+let arregloString: string[] = ["html", "css", "javascript"] 
+
+let datoString = arregloString[0].indexOf("html")

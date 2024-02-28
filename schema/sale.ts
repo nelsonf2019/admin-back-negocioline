@@ -1,6 +1,5 @@
 import { isValidObjectId } from "mongoose";
 import { z } from "zod";
-import { ClientSchema } from "./clients";
 import validateObjectId from "../helpers/validateObject";
 
 const PAYMENT_METHOD_TYPES = [
