@@ -9,7 +9,7 @@ export const validateUser = ()=>{
         const token = req.cookies.jwt //enviamos a las cookies el jwt
         const user = jwt.verify(token, process.env.JWT_TOKEN as string)
 
-        console.log({user})
+        //console.log({user})
         req.user = user as User
         next()
     } catch (error) {

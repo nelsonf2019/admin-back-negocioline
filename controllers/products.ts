@@ -1,12 +1,19 @@
-import { Response, Request } from "express"
-import UserModel from "../models/user"
-
+import { Response } from "express"
 import ProductModel from "../models/products"
  
 
+export const getAll = async (req: any, res: Response)=>{
+   //filtramos con expresion regular con sensitive "i"
+   const { searchText } = req.query
+   //si no hay search no aplica filtro y devuelve todos los items
+   const filter = !searchText ? {}: {name: new RegExp(searchText, "i")}
+  const products = await ProductModel.find(filter)
+  res.status(200).json({ok: true, data: products})
+}
+
 export const getByCode = async (req: any, res: Response)=>{
     const { code } = req.params
-   // console.log({code})
+   console.log({code})
    try {
       const product = await ProductModel.findOne({ code })// buscamos productos 
       console.log({product})

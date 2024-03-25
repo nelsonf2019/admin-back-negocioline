@@ -27,6 +27,7 @@ export const login = async (req: Request, res: Response)=>{
       sub: user._id,
       firstname: user.firstname, 
       lastname: user.lastname, 
+      imageUrl: user.imageUrl,
       roles: user.roles
       }
   // console.log({user})
@@ -49,7 +50,7 @@ export const login = async (req: Request, res: Response)=>{
 
 export const generateCode = async (req: Request, res: Response)=>{
    const { email } = req.params
-
+   console.log("Email", email)
    const user = await UserModel.findOne({email})
    if(!user){
     return res.status(400).json({ok: false, message:"el email no existe por favor registrese"})
