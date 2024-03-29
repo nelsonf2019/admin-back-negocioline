@@ -1,7 +1,7 @@
 import "dotenv/config"
 //creación del servidor express
 import epxress from "express";
-import routes from "./routes"
+import routes from "./routes/index"
 import connectDB from "./db/conect";
 import cors from "cors"
 import cookieParser from "cookie-parser"
