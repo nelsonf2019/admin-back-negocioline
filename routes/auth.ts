@@ -6,4 +6,4 @@ const router = express.Router();
 router.post("/login/:email", login);
 router.post("/login/:email/code", generateCode);
 
-export default router;
+export default router;  

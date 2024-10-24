@@ -1,5 +1,5 @@
 import { Schema, Types, model } from "mongoose";
-import { productSchema } from "./products";
+
 
 export const paymentMethodSchema = new Schema({
     //algunas validaciones en el models antes de guardar los datos en mongoose
@@ -33,4 +33,4 @@ const ventarSchema = new Schema({
 
 //hacemos la conexion con el modelo user 
 const ventaModel = model("Sale", ventarSchema, "sales")
-export default ventaModel;
+export default ventaModel;  

@@ -2,12 +2,12 @@ import { Request } from "express"
 
 export interface User {
     sub: string
-       firstname: string
-       lastname: string
-       roles: {
+    firstname: string
+    lastname: string
+    roles: {
           admin: boolean
           seller: boolean
-       }
+    }
 }
 
 // export interface authRequest extends Request {

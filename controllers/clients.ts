@@ -4,7 +4,7 @@ import ClientModel from "../models/client"
 import { authRequest } from "../schema/auth"
 import { Client } from "../schema/clients"
  
-
+//llamo a todos los clientes
 export const getAll = async (req: Request, res: Response)=>{
    try {
       const clients = await ClientModel.find()//llamamos todos los clientes
@@ -15,11 +15,14 @@ export const getAll = async (req: Request, res: Response)=>{
         res.status(500).json({ok: false, message: "error del servidor"})
    }
 }
+//crear cliente
 export const create = async (req: Request<any, any, Client>, res: Response)=>{
-
+  
   const createdClient = await ClientModel.create(req.body)
   res.status(201).json({ ok: true, data: createdClient })
 }
+
+
 export const getById = async (req: Request, res: Response)=>{
    const { id } = req.params
    try {
@@ -31,6 +34,7 @@ export const getById = async (req: Request, res: Response)=>{
         res.status(500).json({ok: false, message: "error del servidor"})
    }
 }
+
 export const getByDocument = async (req: Request, res: Response)=>{
    const { document } = req.params
    try {

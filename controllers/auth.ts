@@ -36,9 +36,8 @@ export const login = async (req: Request, res: Response)=>{
    //hacemos la firma en el token y definimos lo que vamos a mostrar o mandar
    const token = jwt.sign(
       tokenPayload , process.env.JWT_TOKEN as string
-      
       )
-
+      
       //El web token venceria en 6 Meses
    res.cookie("jwt", token, {
       //         1s  1min 1hora 1 dia 6 meses
@@ -57,7 +56,7 @@ export const generateCode = async (req: Request, res: Response)=>{
    }
    //generador de código para enviar al email y el usuario poder ingresar
    let randomCode = ""
-
+   
    for (let i = 0; i <= 5; i++) {
     const numbers = Math.floor(Math.random() * 10)
     randomCode += numbers
